@@ -5,16 +5,26 @@ class Product:
     description: str
     price: float
     quantity: int
+    cost: float
 
     product_list = []
     product_name_list = []
 
-    def __init__(self, name, description, price, quantity):
+    def __init__(self, name, description, price, quantity, cost=0):
         """Метод для инициализации экземпляра класса"""
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        self.cost = price * quantity
+
+    def __add__(self, other):
+        """Магический метод для сложения стоимости товаров"""
+        return self.cost + other.cost
+
+    def __str__(self):
+        """Магический метод для строкового отображения класса Product"""
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     @classmethod
     def new_product(cls, product_dict):
