@@ -20,7 +20,9 @@ class Product:
 
     def __add__(self, other):
         """Магический метод для сложения стоимости товаров"""
-        return self.cost + other.cost
+        if type(other) is Product:
+            return self.cost + other.cost
+        raise TypeError
 
     def __str__(self):
         """Магический метод для строкового отображения класса Product"""
