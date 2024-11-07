@@ -1,4 +1,8 @@
-class Product:
+from src.base_product import BaseProduct
+from src.print_mixin import PrintMixin
+
+
+class Product(BaseProduct, PrintMixin):
     """Класс для представления товара"""
 
     name: str
@@ -17,6 +21,7 @@ class Product:
         self.__price = price
         self.quantity = quantity
         self.cost = price * quantity
+        super().__init__()
 
     def __add__(self, other):
         """Магический метод для сложения стоимости товаров"""
