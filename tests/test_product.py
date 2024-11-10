@@ -56,3 +56,8 @@ def test_product_add(test_product, test_product2):
 def test_product_add_error(test_product):
     with pytest.raises(TypeError):
         result = test_product + 1  # noqa: F841
+
+
+def test_product_zero_quantity():
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        product = Product("Несуществующий товар", "Неверное количество", 210000.0, 0)  # noqa: F841
