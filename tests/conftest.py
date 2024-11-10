@@ -8,7 +8,7 @@ from src.smartphone import Smartphone
 
 
 @pytest.fixture
-def category1():
+def test_category1():
     return Category(
         name="Смартфоны",
         description="Средство коммуникации",
@@ -21,7 +21,7 @@ def category1():
 
 
 @pytest.fixture
-def category2():
+def test_category2():
     return Category(
         name="Телевизоры",
         description="Крупная бытовая техника",
@@ -94,8 +94,8 @@ def test_product_dict3():
 
 
 @pytest.fixture
-def product_iterator(category1):
-    return ProductIterator(category1)
+def product_iterator(test_category1):
+    return ProductIterator(test_category1)
 
 
 @pytest.fixture
@@ -118,3 +118,8 @@ def test_lawn_grass1():
 @pytest.fixture
 def test_lawn_grass2():
     return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+
+
+@pytest.fixture
+def test_category_empty():
+    return Category("Пустая категория", "Категория без продуктов", [])
